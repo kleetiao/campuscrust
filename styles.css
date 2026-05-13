@@ -258,6 +258,7 @@ header {
   box-shadow: 0 6px 20px rgba(212, 160, 23, 0.4);
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .cta-button.secondary {
@@ -273,6 +274,7 @@ header {
   backdrop-filter: blur(10px);
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 
 .cta-button.primary:hover {
@@ -791,8 +793,8 @@ header {
   padding: 80px 0;
   background-color: var(--white);
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .aboutus h2 {
@@ -815,16 +817,18 @@ header {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
   margin-top: 2rem;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .team-member {
   background-color: var(--bg-creamy-crust);
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 5px 15px var(--shadow);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 3px 10px var(--shadow);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -832,6 +836,9 @@ header {
   border: 2px solid transparent;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .team-member:hover {
@@ -934,9 +941,525 @@ header {
   margin: 0;
 }
 
+/* Vision & Mission Section */
+.vision-mission-section {
+  padding: 80px 0;
+  background-color: var(--bg-creamy-crust);
+}
+
+.vision-mission-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-deep-espresso);
+}
+
+.vision-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vision-card,
+.mission-card {
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 25px var(--shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.vision-card:hover,
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px var(--shadow);
+  border-color: var(--accent-toasted-tan);
+}
+
+.vision-icon,
+.mission-icon {
+  margin-bottom: 1.5rem;
+}
+
+.icon-emoji {
+  font-size: 3rem;
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.vision-card h3,
+.mission-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-deep-espresso);
+  font-weight: bold;
+}
+
+.vision-card p,
+.mission-card p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-deep-espresso);
+  opacity: 0.9;
+}
+
+/* Value Proposition Section */
+.value-proposition-section {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.value-proposition-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-deep-espresso);
+}
+
+.value-subtitle {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--text-deep-espresso);
+  opacity: 0.8;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.value-item {
+  background-color: var(--bg-creamy-crust);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px var(--shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.value-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow);
+  border-color: var(--accent-toasted-tan);
+}
+
+.value-icon {
+  margin-bottom: 1.5rem;
+}
+
+.value-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-deep-espresso);
+  font-weight: bold;
+}
+
+.value-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-deep-espresso);
+  opacity: 0.9;
+}
+
 .contact-section {
   padding: 80px 0;
   background-color: var(--white);
+}
+
+/* QR Ordering Section */
+.qr-ordering-section {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.qr-ordering-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-deep-espresso);
+}
+
+.qr-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.qr-code-container {
+  position: relative;
+  text-align: center;
+}
+
+.qr-code-image {
+  width: 250px;
+  height: 250px;
+  border: 4px solid var(--accent-toasted-tan);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+.qr-scan-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cta-golden-mustard),
+    transparent
+  );
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.qr-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-deep-espresso);
+}
+
+.qr-benefits {
+  list-style: none;
+  padding: 0;
+}
+
+.qr-benefits li {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-deep-espresso);
+  padding-left: 2rem;
+  position: relative;
+}
+
+.qr-benefits li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--cta-golden-mustard);
+  font-weight: bold;
+}
+
+/* Core Values Section */
+.core-values-section {
+  padding: 80px 0;
+  background-color: var(--bg-creamy-crust);
+}
+
+.core-values-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-deep-espresso);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background-color: var(--white);
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: 0 5px 15px var(--shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow);
+  border-color: var(--accent-toasted-tan);
+}
+
+.value-number {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(
+    135deg,
+    var(--cta-golden-mustard),
+    var(--pop-tomato-red)
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.value-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-deep-espresso);
+}
+
+.value-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-deep-espresso);
+  opacity: 0.9;
+}
+
+/* Transactions Section */
+.transactions-section {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.transactions-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-deep-espresso);
+}
+
+.transactions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ordering-process,
+.accepted-payments {
+  background-color: var(--bg-creamy-crust);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px var(--shadow);
+}
+
+.ordering-process h3,
+.accepted-payments h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-deep-espresso);
+  text-align: center;
+}
+
+.process-steps {
+  list-style: none;
+  padding: 0;
+  counter-reset: step-counter;
+}
+
+.process-steps li {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-deep-espresso);
+  padding-left: 3rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.process-steps li::before {
+  counter-increment: step-counter;
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: var(--cta-golden-mustard);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.payment-method:hover {
+  transform: translateY(-2px);
+}
+
+.payment-icon {
+  font-size: 1.5rem;
+}
+
+.payment-method span:last-child {
+  font-size: 1.1rem;
+  color: var(--text-deep-espresso);
+  font-weight: 500;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 80px 0;
+  background-color: var(--bg-creamy-crust);
+}
+
+.testimonials-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-deep-espresso);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background-color: var(--white);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px var(--shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow);
+  border-color: var(--accent-toasted-tan);
+}
+
+.stars {
+  margin-bottom: 1rem;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: var(--cta-golden-mustard);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-deep-espresso);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.customer-name {
+  font-size: 1rem;
+  color: var(--accent-toasted-tan);
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Terms Section */
+.terms-section {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.terms-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-deep-espresso);
+}
+
+.terms-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terms-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: terms-counter;
+}
+
+.terms-list li {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-deep-espresso);
+  padding-left: 3rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.terms-list li::before {
+  counter-increment: terms-counter;
+  content: counter(terms-counter);
+  position: absolute;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: var(--accent-toasted-tan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .contact-section h2 {
@@ -1203,33 +1726,196 @@ footer {
   }
 
   .team-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
   }
 
   .team-member {
-    padding: 1.2rem;
+    padding: 1rem;
   }
 
   .member-photo {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 
   .member-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .member-role {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .member-description {
+    font-size: 0.85rem;
+  }
+
+  .vision-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .vision-card,
+  .mission-card {
+    padding: 2rem;
+  }
+
+  .icon-emoji {
+    font-size: 2.5rem;
+  }
+
+  .vision-card h3,
+  .mission-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .vision-card p,
+  .mission-card p {
+    font-size: 1rem;
+  }
+
+  .value-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .value-item {
+    padding: 1.5rem;
+  }
+
+  .value-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .value-item p {
     font-size: 0.95rem;
   }
 
   .member-icon {
     font-size: 2.5rem;
+  }
+
+  .qr-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .qr-code-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .qr-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .qr-benefits li {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .value-card {
+    padding: 1.5rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .value-card p {
+    font-size: 0.9rem;
+  }
+
+  .value-number {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    top: -10px;
+    left: -10px;
+  }
+
+  .transactions-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .ordering-process,
+  .accepted-payments {
+    padding: 1.2rem;
+  }
+
+  .ordering-process h3,
+  .accepted-payments h3 {
+    font-size: 1.3rem;
+  }
+
+  .process-steps li {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    padding-left: 2.5rem;
+  }
+
+  .process-steps li::before {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+
+  .payment-methods {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .payment-method {
+    padding: 0.8rem;
+  }
+
+  .payment-icon {
+    font-size: 1.3rem;
+  }
+
+  .payment-method span:last-child {
+    font-size: 1rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .testimonial-card {
+    padding: 1.2rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+
+  .star {
+    font-size: 1rem;
+  }
+
+  .customer-name {
+    font-size: 0.9rem;
+  }
+
+  .terms-list li {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    padding-left: 2.5rem;
+  }
+
+  .terms-list li::before {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
   }
 
   .socials-subtitle,

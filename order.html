@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Now - Campus Crust</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Order Page Specific Styles */
+    .order-section {
+      padding: 80px 0;
+      background-color: var(--bg-creamy-crust);
+      min-height: 100vh;
+    }
+
+    .order-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .order-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .order-header h1 {
+      font-size: 2.5rem;
+      color: var(--text-deep-espresso);
+      margin-bottom: 1rem;
+    }
+
+    .order-header p {
+      font-size: 1.2rem;
+      color: var(--text-deep-espresso);
+      opacity: 0.8;
+    }
+
+    .order-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .order-form {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px var(--shadow);
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .form-section h3 {
+      font-size: 1.5rem;
+      color: var(--text-deep-espresso);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-toasted-tan);
+    }
+
+    .menu-items-grid {
+      display: grid;
+      gap: 1rem;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 1rem;
+      background-color: var(--bg-creamy-crust);
+      border-radius: 10px;
+    }
+
+    .menu-item-order {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: var(--white);
+      border-radius: 10px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item-order:hover {
+      border-color: var(--accent-toasted-tan);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .menu-item-order input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 1rem;
+      accent-color: var(--cta-golden-mustard);
+    }
+
+    .menu-item-info {
+      flex: 1;
+    }
+
+    .menu-item-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--text-deep-espresso);
+      margin-bottom: 0.3rem;
+    }
+
+    .menu-item-price {
+      color: var(--cta-golden-mustard);
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .quantity-control input[type="number"] {
+      width: 60px;
+      padding: 0.5rem;
+      border: 2px solid var(--accent-toasted-tan);
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .customer-info-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: var(--text-deep-espresso);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.8rem;
+      border: 2px solid var(--accent-toasted-tan);
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: var(--white);
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--cta-golden-mustard);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .payment-methods-order {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: var(--bg-creamy-crust);
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .payment-option:hover {
+      border-color: var(--accent-toasted-tan);
+    }
+
+    .payment-option input[type="radio"] {
+      margin-right: 0.8rem;
+      accent-color: var(--cta-golden-mustard);
+    }
+
+    .order-summary {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px var(--shadow);
+      position: sticky;
+      top: 2rem;
+    }
+
+    .order-summary h3 {
+      font-size: 1.5rem;
+      color: var(--text-deep-espresso);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-toasted-tan);
+    }
+
+    .summary-items {
+      margin-bottom: 1.5rem;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--accent-toasted-tan);
+    }
+
+    .summary-item:last-child {
+      border-bottom: none;
+    }
+
+    .summary-item-name {
+      flex: 1;
+      color: var(--text-deep-espresso);
+    }
+
+    .summary-item-details {
+      font-size: 0.9rem;
+      color: var(--text-deep-espresso);
+      opacity: 0.7;
+    }
+
+    .summary-item-price {
+      font-weight: bold;
+      color: var(--cta-golden-mustard);
+      margin-left: 1rem;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-top: 2px solid var(--accent-toasted-tan);
+      margin-top: 1rem;
+    }
+
+    .summary-total-label {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--text-deep-espresso);
+    }
+
+    .summary-total-amount {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--cta-golden-mustard);
+    }
+
+    .submit-order-btn {
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, var(--cta-golden-mustard), var(--pop-tomato-red));
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 2rem;
+    }
+
+    .submit-order-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    .submit-order-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .order-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .order-summary {
+        position: relative;
+        top: 0;
+      }
+
+      .payment-methods-order {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-items-grid {
+        max-height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .order-header h1 {
+        font-size: 2rem;
+      }
+
+      .order-form {
+        padding: 1.5rem;
+      }
+
+      .order-summary {
+        padding: 1.5rem;
+      }
+
+      .menu-item-order {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .menu-item-order input[type="checkbox"] {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-left">
+          <a href="index.html" class="logo-link">
+            <img src="img/logo.png" alt="Campus Crust Logo" class="logo" />
+          </a>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#menu">Menu</a></li>
+          <li><a href="order.html" class="active">Order</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="order-section">
+      <div class="order-container">
+        <div class="order-header">
+          <h1>Place Your Order</h1>
+          <p>Fresh sandwiches delivered right to your doorstep!</p>
+        </div>
+
+        <div class="order-content">
+          <div class="order-form">
+            <!-- Menu Items Selection -->
+            <div class="form-section">
+              <h3>Select Your Items</h3>
+              <div class="menu-items-grid">
+                <div class="menu-item-order">
+                  <input type="checkbox" id="sandwich1" name="items[]" value="the-original">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">The Original</div>
+                    <div class="menu-item-price">₱95</div>
+                    <div class="quantity-control">
+                      <label for="qty1">Qty:</label>
+                      <input type="number" id="qty1" name="qty1" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-item-order">
+                  <input type="checkbox" id="sandwich2" name="items[]" value="sausage-crust">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">Sausage Crust</div>
+                    <div class="menu-item-price">₱105</div>
+                    <div class="quantity-control">
+                      <label for="qty2">Qty:</label>
+                      <input type="number" id="qty2" name="qty2" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-item-order">
+                  <input type="checkbox" id="sandwich3" name="items[]" value="egg-cheezy-crust">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">Egg Cheezy Crust</div>
+                    <div class="menu-item-price">₱95</div>
+                    <div class="quantity-control">
+                      <label for="qty3">Qty:</label>
+                      <input type="number" id="qty3" name="qty3" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-item-order">
+                  <input type="checkbox" id="sandwich4" name="items[]" value="premium-chicken-crust">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">Premium Chicken Crust</div>
+                    <div class="menu-item-price">₱120</div>
+                    <div class="quantity-control">
+                      <label for="qty4">Qty:</label>
+                      <input type="number" id="qty4" name="qty4" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-item-order">
+                  <input type="checkbox" id="sandwich5" name="items[]" value="meaty-crust-overload">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">Meaty Crust Overload</div>
+                    <div class="menu-item-price">₱130</div>
+                    <div class="quantity-control">
+                      <label for="qty5">Qty:</label>
+                      <input type="number" id="qty5" name="qty5" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-item-order">
+                  <input type="checkbox" id="drink1" name="items[]" value="coffee">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">Coffee</div>
+                    <div class="menu-item-price">₱45</div>
+                    <div class="quantity-control">
+                      <label for="qty6">Qty:</label>
+                      <input type="number" id="qty6" name="qty6" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-item-order">
+                  <input type="checkbox" id="drink2" name="items[]" value="iced-tea">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">Iced Tea</div>
+                    <div class="menu-item-price">₱35</div>
+                    <div class="quantity-control">
+                      <label for="qty7">Qty:</label>
+                      <input type="number" id="qty7" name="qty7" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="menu-item-order">
+                  <input type="checkbox" id="drink3" name="items[]" value="lemonade">
+                  <div class="menu-item-info">
+                    <div class="menu-item-name">Lemonade</div>
+                    <div class="menu-item-price">₱40</div>
+                    <div class="quantity-control">
+                      <label for="qty8">Qty:</label>
+                      <input type="number" id="qty8" name="qty8" min="0" max="10" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Customer Information -->
+            <div class="form-section">
+              <h3>Your Information</h3>
+              <div class="customer-info-grid">
+                <div class="form-group">
+                  <label for="customer-name">Full Name *</label>
+                  <input type="text" id="customer-name" name="customer-name" required>
+                </div>
+                <div class="form-group">
+                  <label for="customer-phone">Phone Number *</label>
+                  <input type="tel" id="customer-phone" name="customer-phone" required>
+                </div>
+                <div class="form-group">
+                  <label for="customer-email">Email Address</label>
+                  <input type="email" id="customer-email" name="customer-email">
+                </div>
+                <div class="form-group">
+                  <label for="delivery-address">Delivery Address *</label>
+                  <textarea id="delivery-address" name="delivery-address" required placeholder="Enter your complete delivery address"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="order-notes">Special Instructions</label>
+                  <textarea id="order-notes" name="order-notes" placeholder="Any special requests or dietary requirements?"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-section">
+              <h3>Payment Method</h3>
+              <div class="payment-methods-order">
+                <div class="payment-option">
+                  <input type="radio" id="cash" name="payment" value="cash" checked>
+                  <label for="cash">💵 Cash</label>
+                </div>
+                <div class="payment-option">
+                  <input type="radio" id="gcash" name="payment" value="gcash">
+                  <label for="gcash">📱 GCash</label>
+                </div>
+                <div class="payment-option">
+                  <input type="radio" id="maya" name="payment" value="maya">
+                  <label for="maya">💳 Maya</label>
+                </div>
+                <div class="payment-option">
+                  <input type="radio" id="bank" name="payment" value="bank">
+                  <label for="bank">🏦 Bank Transfer</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-items">
+              <div class="summary-item">
+                <div class="summary-item-name">
+                  <div>No items selected</div>
+                  <div class="summary-item-details"></div>
+                </div>
+                <div class="summary-item-price">₱0</div>
+              </div>
+            </div>
+            <div class="summary-total">
+              <div class="summary-total-label">Total:</div>
+              <div class="summary-total-amount">₱0</div>
+            </div>
+            <button type="submit" class="submit-order-btn" formaction="mailto:campuscrustbcd@gmail.com?subject=New Order">
+              Submit Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Campus Crust. All Rights Reserved. "Serving happiness between every slice."</p>
+    </div>
+  </footer>
+</body>
+</html>
